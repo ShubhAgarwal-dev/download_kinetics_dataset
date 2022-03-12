@@ -32,7 +32,7 @@ def refine_videos(batch_name, json_file, audio=False):
 
 # Below it the code to extract frames from the video
 def format_timedelta(td):
-    """Utility function to format timedelta objects in a cool way (e.g 00:00:20.05) 
+    """Utility function to format timedelta objects in a cool way (e.g 00:00:20.05)
     omitting microseconds and retaining milliseconds"""
     result = str(td)
     try:
@@ -46,7 +46,7 @@ def format_timedelta(td):
 
 def extract_frames(video_file, FPS):
     """
-    To extract frames from the video_file 
+    To extract frames from the video_file
     and FPS is the frames you want
     """
     # load the video clip
@@ -72,6 +72,14 @@ def extract_frames(video_file, FPS):
         video_clip.save_frame(frame_filename, current_duration)
 
 
+def batch_frame_extractor(name):
+    dir = change_path(name)
+    for file in os.listdir(dir):
+        extract_frames(file, 10)
+
+
 if __name__ == '__main__':
     # refine_videos('folder1')
-    refine_videos('fld3', '../../dataset2/validate.json')
+    # refine_videos('fld3', '../../dataset2/validate.json')
+    batch_frame_extractor('fld3')
+    pass
