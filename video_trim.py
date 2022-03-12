@@ -10,16 +10,24 @@ import numpy as np
 from datetime import timedelta
 
 
-def refine_videos(batch_name, json_file):
+def refine_videos(batch_name, json_file, audio=False):
+    """
+    To get the videos of desired length
+    """
     cp = change_path(batch_name)
     for path in pathlib.Path(cp).iterdir():
-        file_tail = os.path.split(path)[1]
-        file_name = os.path.splitext[file_tail][0]
-        file_ext = os.path.splitext[file_tail][1]
+        # file_tail = os.path.split(path)[1]
+        # file_name = os.path.splitext[file_tail][0]
+        # file_ext = os.path.splitext[file_tail][1]
+        file_name_ht = os.path.split(path)
+        file_name_split_ht = os.path.splitext(file_name_ht[1])
+        file_name = file_name_split_ht[0]
+        file_ext = file_name_split_ht[1]
         clip = VideoFileClip(f"{file_name}{file_ext}")
-        start = gsn(batch_name, json_file)
-        end = ges(batch_name, json_file)
+        start = gsn(file_name, json_file)
+        end = ges(file_name, json_file)
         clip = clip.subclip(int(start), int(end))
+        clip.write_videofile(str(path), audio=audio)
 
 
 # Below it the code to extract frames from the video
@@ -37,11 +45,14 @@ def format_timedelta(td):
 
 
 def extract_frames(video_file, FPS):
+    """
+    To extract frames from the video_file 
+    and FPS is the frames you want
+    """
     # load the video clip
     video_clip = VideoFileClip(video_file)
     # make a folder by the name of the video file
     filename, _ = os.path.splitext(video_file)
-    filename += "-moviepy"
     if not os.path.isdir(filename):
         os.mkdir(filename)
 
@@ -62,4 +73,5 @@ def extract_frames(video_file, FPS):
 
 
 if __name__ == '__main__':
-    refine_videos('folder1')
+    # refine_videos('folder1')
+    refine_videos('fld3', '../../dataset2/validate.json')

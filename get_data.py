@@ -10,7 +10,7 @@ def get_urls_from_names(itter):
 
 def prepare_json(json_file: str = r'dataset2/test.json'):
     with open(json_file, mode='r') as jsonfile:
-        json_dict = json.loads(jsonfile)
+        json_dict = json.load(jsonfile)
         jsonfile.close()
     return json_dict
 
