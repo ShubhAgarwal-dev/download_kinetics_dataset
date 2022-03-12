@@ -44,7 +44,7 @@ def format_timedelta(td):
     return f"{result}.{ms:02}".replace(":", "-")
 
 
-def extract_frames(video_file, FPS):
+def extract_frames(video_file, FPS: int):
     """
     To extract frames from the video_file
     and FPS is the frames you want

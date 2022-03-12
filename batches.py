@@ -44,7 +44,7 @@ def make_batch(size: int, dataset: str):
     return batch
 
 
-def change_path(name):
+def change_path(name: str):
     current_path = os.getcwd()
     path_to_save_to = current_path + fr'\destination\{name}'
     if not os.path.exists(path_to_save_to):
@@ -53,7 +53,7 @@ def change_path(name):
     return path_to_save_to
 
 
-def download_batch(batch, name):
+def download_batch(batch, name: str, format='18/160'):
     """
     It will download the whole batch that ypu would have created
     and save it to the destination foldes with folder name give in second argument
@@ -67,13 +67,13 @@ def download_batch(batch, name):
         print(url)
         # download.download_video(url, f'{batch[i]}.mp4', format='160')
         try:
-            download.download_video(url, f'{batch[i]}.mp4', format='160')
+            download.download_video(url, f'{batch[i]}.mp4', format=format)
         except:
             continue
     clean_up_dir(name)
 
 
-def remove_batch(name):
+def remove_batch(name: str):
     '''
     Please run command prompt as administrator
     '''
@@ -84,7 +84,7 @@ def remove_batch(name):
     shutil.rmtree(current_path)
 
 
-def clean_up_dir(name):
+def clean_up_dir(name: str):
     """
     To remove some extra unnecessary file from the 
     batch directory
