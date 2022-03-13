@@ -89,7 +89,7 @@ def clean_up_dir(name: str):
     To remove some extra unnecessary file from the 
     batch directory
     """
-    dir = change_path(name)
+    # dir = change_path(name)
     for i in os.listdir(dir):
         unpack = i.split('.')
         if unpack[-1] != 'mp4':
