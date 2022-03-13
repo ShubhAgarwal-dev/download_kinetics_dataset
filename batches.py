@@ -58,7 +58,7 @@ def download_batch(batch, name: str, format='18/160'):
     It will download the whole batch that ypu would have created
     and save it to the destination foldes with folder name give in second argument
     """
-    change_path(name)
+    dir = change_path(name)
     urls = get_data.get_urls_from_names(batch)
     with open('../batches.txt', mode='a+') as file:
         file.write(name+'\n')
@@ -70,7 +70,7 @@ def download_batch(batch, name: str, format='18/160'):
             download.download_video(url, f'{batch[i]}.mp4', format=format)
         except:
             continue
-    clean_up_dir(name)
+    clean_up_dir(name, str(dir))
 
 
 def remove_batch(name: str):
@@ -84,7 +84,7 @@ def remove_batch(name: str):
     shutil.rmtree(current_path)
 
 
-def clean_up_dir(name: str):
+def clean_up_dir(name: str, dir):
     """
     To remove some extra unnecessary file from the 
     batch directory

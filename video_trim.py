@@ -10,7 +10,7 @@ import numpy as np
 from datetime import timedelta
 
 
-def refine_videos(batch_name, json_file, audio=True):
+def refine_videos(batch_name, json_file):
     """
     To get the videos of desired length
     """
@@ -27,7 +27,7 @@ def refine_videos(batch_name, json_file, audio=True):
         start = gsn(file_name, json_file)
         end = ges(file_name, json_file)
         clip = clip.subclip(int(start), int(end))
-        clip.write_videofile(str(path), audio=audio)
+        clip.write_videofile(str(path))
 
 
 # Below it the code to extract frames from the video
