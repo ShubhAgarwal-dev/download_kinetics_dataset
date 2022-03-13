@@ -10,7 +10,7 @@ import numpy as np
 from datetime import timedelta
 
 
-def refine_videos(batch_name, json_file, audio=False):
+def refine_videos(batch_name, json_file, audio=True):
     """
     To get the videos of desired length
     """
@@ -72,10 +72,10 @@ def extract_frames(video_file, FPS: int):
         video_clip.save_frame(frame_filename, current_duration)
 
 
-def batch_frame_extractor(name):
+def batch_frame_extractor(name, fps):
     dir = change_path(name)
     for file in os.listdir(dir):
-        extract_frames(file, 10)
+        extract_frames(file, fps)
 
 
 if __name__ == '__main__':

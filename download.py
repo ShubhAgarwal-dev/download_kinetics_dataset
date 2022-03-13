@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
-import youtube_dl
+# import youtube_dl
+import yt_dlp as youtube_dl
 
 
 def download_video(link: str, name: str, format='22/18/160'):
