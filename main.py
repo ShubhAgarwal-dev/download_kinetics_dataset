@@ -1,7 +1,7 @@
-from email.mime import audio
-from batches import clean_up_dir, make_batch, download_batch
-from video_trim import batch_frame_extractor, refine_videos, extract_frames
+from __future__ import unicode_literals
 import os
+from video_trim import batch_frame_extractor, refine_videos, extract_frames
+from batches import clean_up_dir, make_batch, download_batch
 
 cdir = os.getcwd()
 
@@ -23,10 +23,10 @@ def automater(name: str, json_file: str, count: int = 16, fps: int = 5):
     batch = make_batch(count, json_file_loc)
     download_batch(batch, name)
     os.chdir(cdir)
-    refine_videos(name, json_file_loc)
+    refine_videos(str(name), json_file_loc)
     os.chdir(cdir)
     batch_frame_extractor(name, fps)
 
 
 if __name__ == '__main__':
-    automater('fld1', 'validate.json', count=128, fps=2)
+    automater('fld1', 'validate.json', count=128, fps=10)

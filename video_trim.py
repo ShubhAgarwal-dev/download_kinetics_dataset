@@ -1,4 +1,4 @@
-# Work in progress
+from __future__ import unicode_literals
 from batches import change_path
 from get_data import get_start_by_name as gsn, get_end_by_name as ges
 from moviepy.editor import *
@@ -27,6 +27,8 @@ def refine_videos(batch_name, json_file):
         start = gsn(file_name, json_file)
         end = ges(file_name, json_file)
         clip = clip.subclip(int(start), int(end))
+        print(f"{file_name}{file_ext}")
+        print(path)
         clip.write_videofile(str(path))
 
 
