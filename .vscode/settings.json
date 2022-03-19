@@ -39,7 +39,7 @@
     "cSpell.userWords": [
         "Goel"
     ],
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "python.formatting.provider": "autopep8",
     "cSpell.customDictionaries": {
         "custom-dictionary-workspace": {

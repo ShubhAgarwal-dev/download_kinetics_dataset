@@ -28,5 +28,11 @@ def automater(name: str, json_file: str, count: int = 16, fps: int = 5):
     batch_frame_extractor(name, fps)
 
 
+def download_video(dataset, name, count=2):
+    batch = make_batch(count, dataset)
+    download_batch(batch, name)
+
+
 if __name__ == '__main__':
-    automater('fld1', 'validate.json', count=128, fps=10)
+    # automater('fld1', 'validate.json', count=128, fps=10)
+    download_video('train1.json', 'train1')

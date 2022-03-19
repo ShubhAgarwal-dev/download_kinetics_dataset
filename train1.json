@@ -1,0 +1,28 @@
+{
+    "--6bJUbfpnQ": {
+        "annotations": {
+            "label": "drinking beer",
+            "segment": [
+                17.0,
+                27.0
+            ]
+        },
+        "downloaded": true,
+        "duration": 10.0,
+        "subset": "test",
+        "url": "https://www.youtube.com/watch?v=--6bJUbfpnQ"
+    },
+    "--swPW3U9EE": {
+        "annotations": {
+            "label": "tossing salad",
+            "segment": [
+                247.0,
+                257.0
+            ]
+        },
+        "downloaded": true,
+        "duration": 10.0,
+        "subset": "test",
+        "url": "https://www.youtube.com/watch?v=--swPW3U9EE"
+    }
+}
