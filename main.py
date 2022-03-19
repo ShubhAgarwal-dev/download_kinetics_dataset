@@ -3,6 +3,8 @@ import os
 from video_trim import batch_frame_extractor, refine_videos, extract_frames
 from batches import clean_up_dir, make_batch, download_batch
 
+import json
+
 cdir = os.getcwd()
 
 # batch1 = make_batch(16, r'dataset2\validate.json')
@@ -31,8 +33,34 @@ def automater(name: str, json_file: str, count: int = 16, fps: int = 5):
 def download_video(dataset, name, count=2):
     batch = make_batch(count, dataset)
     download_batch(batch, name)
+    os.chdir(cdir)
+    refine_videos(name, dataset)
 
 
+def change_label(filepath: str):
+    '''
+    Please run to add 'download' key to
+    your json file, otherwise it may not make a 
+    '''
+    with open(filepath, mode='r') as file:
+        file_dict = json.load(file)
+        file.close()
+
+    for i in file_dict.items():
+        i[1]['downloaded'] = False
+
+    with open(filepath, mode='w') as file:
+        file.write(json.dumps(file_dict, indent=4, sort_keys=True))
+
+
+1
 if __name__ == '__main__':
-    # automater('fld1', 'validate.json', count=128, fps=10)
-    download_video('train1.json', 'train1')
+    # automater('fld1', 'validate.json', count=128, fps=10) # Do not run this
+
+    # change_label('train1.json')
+    # # Please run this before using new json file
+    # #it is required to add download key to json file
+    # #which is required before making batches
+
+    download_video(
+        r'D:\Projects\Inter-IIT\yt_video_downloader\train1.json', 'train1')
